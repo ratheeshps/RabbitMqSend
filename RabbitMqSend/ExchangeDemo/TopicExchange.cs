@@ -22,7 +22,7 @@ namespace RabbitMqSend.ExchangeDemo
             {
                 var message = new { Name = "Topic Exchange Producer", Message = $"RabbitMQ Topic Exchange.My order {count}" };
                 var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
-                channel.BasicPublish("topic-exchange", "user.update", null, body);
+                channel.BasicPublish("topic-exchange", "user.*", null, body);
                 count++;
                 Thread.Sleep(1000);
             }

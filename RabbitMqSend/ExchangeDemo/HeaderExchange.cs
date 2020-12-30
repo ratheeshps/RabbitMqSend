@@ -25,9 +25,11 @@ namespace RabbitMqSend.ExchangeDemo
                 var properties = channel.CreateBasicProperties();
                 properties.Headers = new Dictionary<string, object>
                 {
-                    {"account","update" }
+                    {"account","new" }, 
+                    {"account","update" },
+                    {"account","delete" }
                 };
-                channel.BasicPublish("header-exchange", string.Empty, properties, body);
+                channel.BasicPublish("header-exchange-queue", string.Empty, properties, body);
                 count++;
                 Thread.Sleep(1000);
             }

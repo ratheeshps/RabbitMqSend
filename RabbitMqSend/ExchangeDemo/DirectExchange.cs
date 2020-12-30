@@ -20,7 +20,8 @@ namespace RabbitMqSend.ExchangeDemo
             var count = 0;
             while (true)
             {
-                var message = new { Name = "Direct Exchange Producer", Message = $"RabbitMQ Direct Exchange.My order {count}" };
+                var message = new { Name = "Direct Exchange Producer", 
+                    Message = $"RabbitMQ Direct Exchange.My order {count}" };
                 var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
                 channel.BasicPublish("direct-exchange", "payment.init", null, body);
                 count++;
